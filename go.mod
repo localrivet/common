@@ -3,6 +3,7 @@ module github.com/localrivet/common
 go 1.19
 
 require (
+	github.com/jmoiron/sqlx v1.3.5
 	github.com/onsi/ginkgo/v2 v2.4.0
 	github.com/onsi/gomega v1.23.0
 )

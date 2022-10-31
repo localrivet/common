@@ -1,4 +1,4 @@
-package pgconfig
+package postgresql
 
 type PostgreSQLConfig struct {
 	DataSourceName               string
