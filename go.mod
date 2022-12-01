@@ -3,6 +3,7 @@ module github.com/localrivet/common
 go 1.19
 
 require (
+	github.com/go-sql-driver/mysql v1.6.0
 	github.com/google/go-querystring v1.1.0
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/onsi/ginkgo/v2 v2.4.0
