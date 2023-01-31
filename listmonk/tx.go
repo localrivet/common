@@ -10,8 +10,12 @@ import (
 func (s *Listmonk) Tx(in *Transactional) error {
 	postData, err := query.Values(in)
 	if err != nil {
-		fmt.Println("convertion error: ", err)
+		fmt.Println("conversion error: ", err)
 	}
+
+	fmt.Println("Sending transactional email to " + in.SubscriberEmail)
+	fmt.Println(postData)
+
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
 	u.Path = "/api/tx"
 
