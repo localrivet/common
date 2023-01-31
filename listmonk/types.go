@@ -20,10 +20,10 @@ type Transactional struct {
 }
 
 type Subscribe struct {
-	Email                   string      `json:"email"`                              // 	String	Required	The email address of the new susbcriber.
-	Name                    string      `json:"name"`                               // 	String	Required	The name of the new subscriber.
-	Status                  string      `json:"status"`                             // 	String	Required	The status of the new subscriber. Can be enabled, disabled or blocklisted.
-	ListIDs                 []int64     `json:"lists,omitempty"`                    // 	Numbers	Optional	Array of list IDs to subscribe to (marked as unconfirmed by default).
-	Attribs                 interface{} `json:"attribs,omitempty"`                  // 	json	Optional	JSON list containing new subscriber's attributes.
-	PreconfirmSubscriptions bool        `json:"preconfirm_subscriptions,omitempty"` //	Bool	Optional	If true, marks subscriptsions as confirmed and no-optin e-mails are sent for double opt-in lists.
+	Email                   string      `url:"email"`                              // 	String	Required	The email address of the new susbcriber.
+	Name                    string      `url:"name"`                               // 	String	Required	The name of the new subscriber.
+	Status                  string      `url:"status"`                             // 	String	Required	The status of the new subscriber. Can be enabled, disabled or blocklisted.
+	ListIDs                 []int64     `url:"lists,omitempty"`                    // 	Numbers	Optional	Array of list IDs to subscribe to (marked as unconfirmed by default).
+	Attribs                 interface{} `url:"attribs,omitempty"`                  // 	json	Optional	JSON list containing new subscriber's attributes.
+	PreconfirmSubscriptions bool        `url:"preconfirm_subscriptions,omitempty"` //	Bool	Optional	If true, marks subscriptsions as confirmed and no-optin e-mails are sent for double opt-in lists.
 }
