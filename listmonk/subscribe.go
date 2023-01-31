@@ -1,18 +1,23 @@
 package listmonk
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
-
-	"github.com/google/go-querystring/query"
 )
 
 func (s *Listmonk) Subscribe(in *Subscribe) error {
-	postData, _ := query.Values(in)
+	jsonB, err := json.Marshal(in)
+	if err != nil {
+		fmt.Println("marshaling data error: ", err)
+	}
+	fmt.Println("Subscribing " + in.Email)
+	fmt.Println(jsonB)
+
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
 	u.Path = "/api/subscribers"
 
-	body, err := s.do(u.String(), postData)
+	body, err := s.do(u.String(), jsonB)
 
 	fmt.Println(string(body))
 	return err
