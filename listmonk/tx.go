@@ -1,6 +1,7 @@
 package listmonk
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
 
@@ -13,6 +14,11 @@ func (s *Listmonk) Tx(in *Transactional) error {
 		fmt.Println("conversion error: ", err)
 	}
 
+	b, err := json.Marshal(in.Data)
+	if err != nil {
+		fmt.Println("marshaling data error: ", err)
+	}
+	postData.Set("data", string(b))
 	fmt.Println("Sending transactional email to " + in.SubscriberEmail)
 	fmt.Println(postData)
 
