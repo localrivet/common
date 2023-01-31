@@ -14,18 +14,18 @@ func (s *Listmonk) Tx(in *Transactional) error {
 		fmt.Println("conversion error: ", err)
 	}
 
-	b, err := json.Marshal(in.Data)
+	jsonB, err := json.Marshal(postData)
 	if err != nil {
 		fmt.Println("marshaling data error: ", err)
 	}
-	postData.Set("data", string(b))
+
 	fmt.Println("Sending transactional email to " + in.SubscriberEmail)
-	fmt.Println(postData)
+	fmt.Println(jsonB)
 
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
 	u.Path = "/api/tx"
 
-	body, err := s.do(u.String(), postData)
+	body, err := s.do(u.String(), jsonB)
 
 	fmt.Println(string(body))
 	return err

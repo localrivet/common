@@ -1,10 +1,9 @@
 package listmonk
 
 import (
+	"bytes"
 	"io"
 	"net/http"
-	"net/url"
-	"strings"
 	"time"
 )
 
@@ -18,11 +17,11 @@ func NewListmonk(config ListmonkConfig) *Listmonk {
 	}
 }
 
-func (s *Listmonk) do(url string, vals url.Values) (body []byte, err error) {
+func (s *Listmonk) do(url string, jsonB []byte) (body []byte, err error) {
 	client := &http.Client{
 		Timeout: time.Second * 10,
 	}
-	r, _ := http.NewRequest(http.MethodPost, url, strings.NewReader(vals.Encode())) // URL-encoded payload
+	r, _ := http.NewRequest(http.MethodPost, url, bytes.NewBuffer(jsonB)) // URL-encoded payload
 	r.Header.Add("Content-Type", "application/json; charset=utf-8")
 	r.SetBasicAuth(s.Config.Username, s.Config.Password)
 
