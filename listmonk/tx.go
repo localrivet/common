@@ -12,7 +12,7 @@ func (s *Listmonk) Tx(in *Transactional) error {
 		fmt.Println("marshaling data error: ", err)
 	}
 	fmt.Println("Sending transactional email to " + in.SubscriberEmail)
-	fmt.Println(jsonB)
+	fmt.Println(string(jsonB))
 
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
 	u.Path = "/api/tx"
