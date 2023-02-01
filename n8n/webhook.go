@@ -6,7 +6,7 @@ import (
 	"net/url"
 )
 
-func (s *N8N) Webhook(endpoint string, in interface{}) (body []byte, err error) {
+func (s *N8N) Webhook(endpoint string, in map[string]interface{}) (body []byte, err error) {
 	jsonB, err := json.Marshal(in)
 	if err != nil {
 		fmt.Println("marshaling data error: ", err)
