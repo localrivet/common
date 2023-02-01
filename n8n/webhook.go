@@ -1,4 +1,4 @@
-package listmonk
+package n8n
 
 import (
 	"encoding/json"
@@ -6,17 +6,14 @@ import (
 	"net/url"
 )
 
-func (s *Listmonk) Tx(in *Transactional) error {
+func (s *N8N) Webhook(endpoint string, in interface{}) (body []byte, err error) {
 	jsonB, err := json.Marshal(in)
 	if err != nil {
 		fmt.Println("marshaling data error: ", err)
 	}
 
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
-	u.Path = "/api/tx"
+	u.Path = endpoint
 
-	body, err := s.do(u.String(), jsonB)
-
-	fmt.Println(string(body))
-	return err
+	return s.do(u.String(), jsonB)
 }

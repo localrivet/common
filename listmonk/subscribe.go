@@ -11,8 +11,6 @@ func (s *Listmonk) Subscribe(in *Subscribe) error {
 	if err != nil {
 		fmt.Println("marshaling data error: ", err)
 	}
-	fmt.Println("Subscribing " + in.Email)
-	fmt.Println(jsonB)
 
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
 	u.Path = "/api/subscribers"
