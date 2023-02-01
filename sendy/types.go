@@ -19,3 +19,9 @@ type Unsubscribe struct {
 	ListId  *string `url:"list"`
 	Boolean bool    `url:"boolean"`
 }
+
+type Status struct {
+	ApiKey *string `url:"api_key"`
+	Email  *string `url:"email"`
+	ListId *string `url:"list"`
+}
