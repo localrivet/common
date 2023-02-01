@@ -12,6 +12,9 @@ func (s *N8N) Webhook(endpoint string, in map[string]interface{}) (body []byte, 
 		fmt.Println("marshaling data error: ", err)
 	}
 
+	fmt.Println("Webhook endpoint: " + endpoint)
+	fmt.Println("in: ", string(jsonB))
+
 	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
 	u.Path = endpoint
 
