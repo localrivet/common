@@ -22,6 +22,6 @@ type Unsubscribe struct {
 
 type Status struct {
 	ApiKey *string `url:"api_key"`
-	Email  *string `url:"email"`
-	ListId *string `url:"list"`
+	Email  string  `url:"email"`
+	ListId string  `url:"list"`
 }
