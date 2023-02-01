@@ -14,7 +14,7 @@ func (s *N8N) Webhook(endpoint string, in map[string]interface{}) (body []byte, 
 
 	fmt.Println("in: ", string(jsonB))
 
-	u, _ := url.ParseRequestURI(s.Config.ApiUrl)
+	u, _ := url.ParseRequestURI(s.Config.GetApiURL())
 	u.Path = endpoint
 
 	fmt.Println("Webhook endpoint: ", u.String())
